@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const authRoute = require('./routes/auth');
 const threatRoute = require('./routes/threatintel'); // <--- ADD THIS
-
+const statsRouter = require('./routes/stats'); 
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -13,7 +13,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoute);
 app.use('/api/threat', threatRoute); // <--- AND THIS
-
+app.use('/stats', statsRouter);
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('MongoDB Connected');

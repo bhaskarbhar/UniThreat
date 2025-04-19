@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Line } from 'react-chartjs-2';
 import './Dashboard.css';
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend); // Register chart.js components
 
 function Dashboard() {
   const [ip, setIp] = useState('');
@@ -12,6 +16,40 @@ function Dashboard() {
   const [hashResult, setHashResult] = useState(null);
   const [domainResult, setDomainResult] = useState(null);
   const [history, setHistory] = useState([]);
+  const [ipFrequencyData, setIpFrequencyData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchIpFrequency = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get('http://localhost:5000/stats/ip-frequency');
+        const data = response.data;
+
+        const labels = data.map(item => `${item._id.year}-${item._id.month}-${item._id.day}`);
+        const counts = data.map(item => item.count);
+
+        setIpFrequencyData({
+          labels,
+          datasets: [
+            {
+              label: 'IP Frequency',
+              data: counts,
+              fill: false,
+              borderColor: 'rgba(75,192,192,1)',
+              tension: 0.1,
+            },
+          ],
+        });
+      } catch (err) {
+        console.error('Error fetching IP frequency data', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchIpFrequency();
+  }, []);
 
   const handleCheckIp = async () => {
     try {
@@ -64,11 +102,12 @@ function Dashboard() {
           <img src="/src/images/UniThreat_Logo.png" alt="UniThreat Logo" class="logo" />
         </div>
         <ul>
-        <li><a href="#ip-lookup">IP Lookup</a></li>
-  <li><a href="#url-scan">URL Scan</a></li>
-  <li><a href="#hash-analysis">Hash Analysis</a></li>
-  <li><a href="#domain-report">Domain Report</a></li>
-  <li><a href="#search-history">Search History</a></li>
+          <li><a href="#ip-lookup">IP Lookup</a></li>
+          <li><a href="#url-scan">URL Scan</a></li>
+          <li><a href="#hash-analysis">Hash Analysis</a></li>
+          <li><a href="#domain-report">Domain Report</a></li>
+          <li><a href="#search-history">Search History</a></li>
+          <li><a href="#ip-frequency">IP Frequency Stats</a></li>
         </ul>
       </div>
       <div className="main">
@@ -248,6 +287,16 @@ function Dashboard() {
               </li>
             ))}
           </ul>
+        </div>
+        <div className="section" id="ip-frequency">
+          <h2 className="subtitle">IP Frequency Statistics</h2>
+          {loading ? (
+            <p>Loading IP Frequency data...</p>
+          ) : ipFrequencyData ? (
+            <Line data={ipFrequencyData} options={{ responsive: true }} />
+          ) : (
+            <p>No data available</p>
+          )}
         </div>
       </div>
     </div>

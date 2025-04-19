@@ -35,7 +35,6 @@ function Login() {
         <div style={styles.logoWrapper}>
           <img src="/src/images/Unithreat_Logo.png" alt="Unithreat Logo" style={styles.image} />
         </div>
-        <h1>Your One stop solution for all threat Intel tools</h1>
       </div>
       <div style={styles.rightBlock}>
         <div style={styles.loginCard}>
