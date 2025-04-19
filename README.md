@@ -30,9 +30,33 @@
 ### 🛠️ Installation
 
 1. **Clone the repository**
-
-```bash
+   ```bash
 git clone https://github.com/yourusername/unithreat-dashboard.git
-cd unithreat-dashboard
-2. ****Install server dependencies****
-
+cd unithreat-dashboard```
+2. **Install server dependencies**
+   ```bash
+   cd backend
+   npm install
+   ```
+4. **Install frontend dependencies**
+   ```bash
+   cd ..
+   npm install
+   ```
+6. **Environment Configurationy**
+   PORT=5000
+   MONGODB_URI=mongodb://localhost:27017/unithreat
+   ABUSEIPDB_API_KEY=your_abuseipdb_api_key
+   VIRUSTOTAL_API_KEY=your_virustotal_api_key```
+   
+### 🔃 Running the Project
+**Start the backend server:**
+```bash
+cd backend
+node index.js
+```
+**Start the frontend:**
+```bash
+cd ..
+npm run dev
+```
