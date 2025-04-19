@@ -31,19 +31,21 @@
 
 1. **Clone the repository**
    ```bash
-git clone https://github.com/yourusername/unithreat-dashboard.git
-cd unithreat-dashboard```
+   git clone https://github.com/yourusername/unithreat-dashboard.git
+   cd unithreat-dashboard
+   ```
+
 2. **Install server dependencies**
    ```bash
    cd backend
    npm install
    ```
-4. **Install frontend dependencies**
+3. **Install frontend dependencies**
    ```bash
    cd ..
    npm install
    ```
-6. **Environment Configurationy**
+4. **Environment Configurationy**
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/unithreat
    ABUSEIPDB_API_KEY=your_abuseipdb_api_key
