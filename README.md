@@ -47,10 +47,12 @@
    npm install
    ```
 4. **Environment Configurationy**
+   ```bash
    PORT=5000
    MONGODB_URI=mongodb://localhost:27017/unithreat
    ABUSEIPDB_API_KEY=your_abuseipdb_api_key
-   VIRUSTOTAL_API_KEY=your_virustotal_api_key```
+   VIRUSTOTAL_API_KEY=your_virustotal_api_key
+   ```
    
 ### 🔃 Running the Project
 **Start the backend server:**
