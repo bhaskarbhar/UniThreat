@@ -13,8 +13,8 @@
 - 🌎 **Domain Reputation** via [ThreatFox](https://threatfox.abuse.ch/)
 - 🕘 **Search History** tracking
 - 🧩 Clean and modern dashboard UI with easy navigation
-- 🔐 Login & Registration system with bcrypt (Phase 5 - Completed)
-- 📊 Visualizations and statistics (Coming in Phase 3)
+- 🔐 Login & Registration system with bcrypt
+- 📊 Visualizations and statistics
 
 ---
 
