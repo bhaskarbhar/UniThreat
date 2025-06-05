@@ -1,4 +1,5 @@
-<img src="UniThreat/src/images/UniThreat_Logo.png" alt="Dashboard Screenshot" width="500" height="500">
+![image](https://github.com/user-attachments/assets/999be59b-178d-4d2d-b602-60a09ae20692)
+
 # 🛡️ UniThreat - Threat Intelligence Dashboard
 
 **UniThreat** is a web-based Threat Intelligence Dashboard built with React and Express.js. It enables users to analyze IPs, URLs, file hashes, and domains using free open-source threat intelligence APIs such as AbuseIPDB, URLhaus, VirusTotal, and ThreatFox. This project is designed for security analysts, researchers, and enthusiasts to perform fast threat lookups and visualize results.
